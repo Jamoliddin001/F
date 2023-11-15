@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .header .form {
+            margin: 0 auto;
+            width: 300px;
+        }
+        .header .form input {
+            width: 100%;
+            padding: 10px;
+        }
+        .header .form .btn {
+            background-color: rgb(13, 225, 13);
+            color: #fff;
+            border: none;
+            outline: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="form">
+            <form action="{% url 'PostForm' %}" method="POST">
+                {% csrf_token %}
+                <h1>POST Form</h1>
+                <input type="name" name="name" placeholder="Enter name">
+                <br>
+                <br>
+                <input type="email" required name="email" placeholder="Enter email">
+                <br>
+                <br>
+                <input type="tel" required name="telephone" value="+7" placeholder="Enter : +7 xxx xxx xx xx ">
+                <br>
+                <br>
+                <input type="submit" class="btn">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

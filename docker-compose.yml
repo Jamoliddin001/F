@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  # POSTGRESQL SETTINGS
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+    container_name: postgres_db_form
+    restart: unless-stopped
+    
+  # DJANGO SETTINGS
+  app:
+    build: .
+    volumes:
+      - .:/django
+    ports:
+      - 8000:8000
+    image: app:django
+    container_name: django_container_form
+    command: python3 manage.py runserver 0.0.0:8000
+    depends_on:
+      - db
